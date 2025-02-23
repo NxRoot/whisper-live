@@ -69,7 +69,7 @@ def listen_and_transcribe():
         r.adjust_for_ambient_noise(source, duration=2)
         hprint("# --> Listening... Speak to the microphone (Ctrl+C to stop)")
 
-        temp_audio_path = None  
+        temp_path = None  
         while True:
             try:
                 # Listen for audio input
@@ -77,21 +77,21 @@ def listen_and_transcribe():
 
                 # Convert audio to wav file
                 audio_data = np.frombuffer(audio.get_raw_data(), dtype=np.int8)
-                temp_audio_path = save_audio_to_wav(audio_data, audio.sample_rate)
+                temp_path = save_audio_to_wav(audio_data, audio.sample_rate)
 
                 # Transcribe the audio
-                transcribe_audio(temp_audio_path)
+                transcribe_audio(temp_path)
 
                 # Clean up temporary file
-                os.unlink(temp_audio_path)
+                os.unlink(temp_path)
 
             except KeyboardInterrupt:
                 hprint("# --> Stopping transcription...")
-                if os.path.exists(temp_audio_path): os.unlink(temp_audio_path)
+                if temp_path != None and os.path.exists(temp_path): os.unlink(temp_path)
                 break
             except Exception as e:
                 hprint(f"# --> Error occurred: {str(e)}")
-                if os.path.exists(temp_audio_path): os.unlink(temp_audio_path)
+                if temp_path != None and os.path.exists(temp_path): os.unlink(temp_path)
                 break
 
 
