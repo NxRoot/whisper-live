@@ -139,10 +139,6 @@ ps.on("close", (code) => {
   console.log(`Process exited with code ${code}`);
 });
 ```
-#### Run
-```
-node index.js
-```
 
 ## Important Notes
 
