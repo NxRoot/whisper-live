@@ -79,6 +79,9 @@ python3 main.py
 ```
 pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model;model"
 ```
+
+> You can use the **--onefile** argument instead of **--onedir** to build a portable version.
+
 ###### MacOS
 ```
 pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model:model" --paths=./venv/lib/python3.10/site-packages
