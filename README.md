@@ -45,7 +45,7 @@ source venv/lib/activate
 </details>
 
 <details>
-<summary>Install required libraries</summary>
+<summary>Install Required Modules</summary>
 
 ###### Win32
 ```
@@ -59,7 +59,7 @@ pip3 install -r requirements.txt
 </details>
 
 <details>
-<summary>Test the application</summary>
+<summary>Test the Application</summary>
 
 ###### Win32
 ```
@@ -74,6 +74,8 @@ python3 main.py
 
 <details>
 <summary>Build into Executable</summary>
+
+###### Make sure you have [PyInstaller](https://pyinstaller.org/en/stable/installation.html) in your virtual environment.
 
 ###### Win32
 ```
