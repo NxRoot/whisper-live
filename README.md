@@ -7,7 +7,7 @@ This project uses [speech_recognition](https://pypi.org/project/SpeechRecognitio
 ## How to Install
 | Exe    | Description | Releases |
 | -------- | ------- | ------- |
-| <a href="https://github.com/NxRoot/soundboard-x-pro/releases/download/release/Soundboard.X.Pro-win32-x64.zip"><img style="min-width: 40px;min-height: 40px; width: 40px;" src="https://i.ibb.co/CsXKQZtX/img.png"/></a> | Download the latest version   | [Download](https://github.com/NxRoot/soundboard-x-pro/releases/download/release/Soundboard.X.Pro-win32-x64.zip)    |
+| <a href="https://github.com/NxRoot/whisper-live/releases/tag/latest"><img style="min-width: 40px;min-height: 40px; width: 40px;" src="https://i.ibb.co/CsXKQZtX/img.png"/></a> | Download the latest version   | [Download](https://github.com/NxRoot/whisper-live/releases/tag/latest)    |
 
 
 ## Build from Source
