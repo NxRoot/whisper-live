@@ -118,12 +118,14 @@ wl.exe --verbose > logs.txt
 
 ## Call Examples
 
+> Make sure you place `wl.exe` in the same folder as `index.js`
+
 #### NodeJS
 ```js
 const { join } = require("path");
 const { spawn } = require("child_process");
 
-const ps = spawn(join(__dirname, "wl", "wl.exe"));
+const ps = spawn(join(__dirname, "wl.exe"));
 
 ps.stdout.on("data", (data) => {
   console.log(`${data}`.trim());
@@ -136,6 +138,10 @@ ps.stderr.on("data", (data) => {
 ps.on("close", (code) => {
   console.log(`Process exited with code ${code}`);
 });
+```
+#### Run
+```
+node index.js
 ```
 
 ## Important Notes
