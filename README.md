@@ -123,14 +123,14 @@ wl.exe --verbose > logs.txt
 const { join } = require("path");
 const { spawn } = require("child_process");
 
-const ps = spawn(join(__dirname, "wl.exe"));
+const ps = spawn(join(__dirname, "wl", "wl.exe"));
 
 ps.stdout.on("data", (data) => {
-  console.log(data);
+  console.log(data.toString());
 });
 
 ps.stderr.on("data", (data) => {
-  console.error(data);
+  console.error(data.toString());
 });
 
 ps.on("close", (code) => {
