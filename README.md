@@ -30,6 +30,12 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
+#### Test the application
+
+```
+python main.py
+```
+
 #### Build into Executable
 
 ```
