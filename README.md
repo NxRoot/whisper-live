@@ -12,6 +12,10 @@ This project uses [speech_recognition](https://pypi.org/project/SpeechRecognitio
 
 ## Build from Source
 
+```
+git clone https://github.com/NxRoot/whisper-live.git
+```
+
 <details>
 <summary>Create a Virtual Environment</summary>
   
@@ -90,7 +94,7 @@ pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model:model" 
 
 ## Custom Execution
 
-> This can be executed from a terminal or via other app.
+> This can be executed from a terminal or called from another app.
 
 #### Default
 ```
@@ -128,6 +132,12 @@ ps.on("close", (code) => {
   console.log(`Process exited with code ${code}`);
 });
 ```
+
+## Important Notes
+
+* Always clone the repo if you wish to build from source.
+* The model can take some time to load using portable versions.
+* On MacOS the SpeechRecognition module requires [PortAudio](https://formulae.brew.sh/formula/portaudio) installed.
 
 ## &nbsp;
 ⭐ If you find this useful!
