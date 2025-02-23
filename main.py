@@ -1,3 +1,4 @@
+from multiprocessing import freeze_support, set_start_method
 from faster_whisper import WhisperModel
 import speech_recognition as sr
 import numpy as np
@@ -6,9 +7,11 @@ import wave
 import sys
 import os
 
+isProd = getattr(sys, 'frozen', False)
+
 def get_model_path():
     """Get the correct path to the model directory whether running as script or frozen exe"""
-    if getattr(sys, 'frozen', False):
+    if isProd:
         # Running in PyInstaller bundle
         return os.path.join(sys._MEIPASS, "model")
     else:
@@ -22,7 +25,7 @@ def hprint(text):
     """
     Conditional print
     """
-    if "--verbose" in sys.argv:
+    if "--verbose" in sys.argv or not isProd:
         print(text, flush=True)
 
 
@@ -63,7 +66,6 @@ def listen_and_transcribe():
     """
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        hprint("# --> Starting Whisper Live...")
         r.adjust_for_ambient_noise(source, duration=2)
         hprint("# --> Listening... Speak to the microphone (Ctrl+C to stop)")
 
@@ -85,13 +87,17 @@ def listen_and_transcribe():
 
             except KeyboardInterrupt:
                 hprint("# --> Stopping transcription...")
-                if temp_audio_path != None: os.unlink(temp_audio_path)
+                if os.path.exists(temp_audio_path): os.unlink(temp_audio_path)
                 break
             except Exception as e:
                 hprint(f"# --> Error occurred: {str(e)}")
-                if temp_audio_path != None: os.unlink(temp_audio_path)
-                continue
+                if os.path.exists(temp_audio_path): os.unlink(temp_audio_path)
+                break
 
 
 if __name__ == "__main__":
+    hprint("# --> Starting Whisper Live...")
+    freeze_support()
+    set_start_method('spawn')
     listen_and_transcribe()
+    os._exit(0)

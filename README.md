@@ -39,7 +39,7 @@ python main.py
 #### Build into Executable
 
 ```
-pyinstaller --name wl --onefile main.py --icon icon.ico --add-data "model;model"
+pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model;model"
 ```
 
 ## Custom Execution
