@@ -126,11 +126,11 @@ const { spawn } = require("child_process");
 const ps = spawn(join(__dirname, "wl", "wl.exe"));
 
 ps.stdout.on("data", (data) => {
-  console.log(data.toString());
+  console.log(`${data}`.trim());
 });
 
 ps.stderr.on("data", (data) => {
-  console.error(data.toString());
+  console.error(`${data}`.trim());
 });
 
 ps.on("close", (code) => {
