@@ -1,0 +1,4 @@
+faster-whisper
+SpeechRecognition
+numpy
+PyAudio
