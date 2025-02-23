@@ -44,6 +44,13 @@ pyinstaller --name wl --onefile main.py --icon icon.ico --add-data "model;model"
 
 ## Custom Execution
 
+> This executable can be called from a terminal or any other app.
+
+#### Default
+```
+.\wl.exe
+```
+
 #### Debug Logs
 ```
 .\wl.exe --verbose > log.txt
