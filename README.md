@@ -12,47 +12,122 @@ This project uses [speech_recognition](https://pypi.org/project/SpeechRecognitio
 
 ## Build from Source
 
-#### Create a Virtual Environment
-
+<details>
+<summary>Create a Virtual Environment</summary>
+  
+###### Win32
 ```
 python -m venv venv
 ```
+###### MacOS
+```
+python3 -m venv venv
+```
 
-#### Activate the Virtual Environment
+</details>
 
+<details>
+<summary>Activate the Virtual Environment</summary>
+  
+###### Win32
 ```
 .\venv\Scripts\activate
 ```
+###### MacOS
+```sh
+source venv/lib/activate
+```
 
-#### Install required libraries
+</details>
 
+<details>
+<summary>Install required libraries</summary>
+
+###### Win32
 ```
 pip install -r requirements.txt
 ```
+###### MacOS
+```
+pip3 install -r requirements.txt
+```
 
-#### Test the application
+</details>
 
+<details>
+<summary>Test the application</summary>
+
+###### Win32
 ```
 python main.py
 ```
+###### MacOS
+```
+python3 main.py
+```
 
-#### Build into Executable
+</details>
 
+<details>
+<summary>Build into Executable</summary>
+
+###### Win32
 ```
 pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model;model"
 ```
+###### MacOS
+```
+pyinstaller --name wl --onedir main.py --icon icon.ico --add-data "model:model" --paths=./venv/lib/python3.10/site-packages
+```
+
+> Make sure the **--paths** argument is aligned with your python version.
+
+&nbsp;
+
+</details>
+
+
 
 ## Custom Execution
 
-> This executable can be called from a terminal or any other app.
+> This can be executed from a terminal or via other app.
 
 #### Default
 ```
-.\wl.exe
+wl.exe
+```
+
+#### Show Info
+```
+wl.exe --verbose
 ```
 
 #### Debug Logs
 ```
-.\wl.exe --verbose > log.txt
+wl.exe --verbose > logs.txt
 ```
 
+## Call Examples
+
+#### NodeJS
+```js
+const { join } = require("path");
+const { spawn } = require("child_process");
+
+const ps = spawn(join(__dirname, "wl.exe"));
+
+ps.stdout.on("data", (data) => {
+  console.log(data);
+});
+
+ps.stderr.on("data", (data) => {
+  console.error(data);
+});
+
+ps.on("close", (code) => {
+  console.log(`Process exited with code ${code}`);
+});
+```
+
+## &nbsp;
+⭐ If you find this useful!
