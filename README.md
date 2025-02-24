@@ -125,7 +125,7 @@ wl.exe --verbose > logs.txt
 const { join } = require("path");
 const { spawn } = require("child_process");
 
-const ps = spawn(join(__dirname, "wl.exe"));
+const ps = spawn(join(__dirname, "wl.exe"), ["--verbose"]);
 
 ps.stdout.on("data", (data) => {
   console.log(`${data}`.trim());
@@ -133,10 +133,6 @@ ps.stdout.on("data", (data) => {
 
 ps.stderr.on("data", (data) => {
   console.error(`${data}`.trim());
-});
-
-ps.on("close", (code) => {
-  console.log(`Process exited with code ${code}`);
 });
 ```
 
